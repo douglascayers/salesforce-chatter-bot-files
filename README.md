@@ -19,4 +19,6 @@ Getting Started
 4. Upload a new File to Salesforce then navigate to the **Chatter Bot File** tab to see the new record.
 5. Upload another version to that File and notice that the **Chatter Bot File** record was updated too.
 
-Everytime a ContentVersion record is inserted or updated then a **Chatter Bot File** record will be created. You can use Process Builder to execute when that object is created and take any actions that you need.
+Everytime a ContentVersion record is inserted or updated then a **Chatter Bot File** record will be upserted. You can use Process Builder to execute when that object is created or updated and take any actions that you need.
+
+For any given `ContentDocumentId` value there will be exactly one `Chatter Bot File` record. If you need to get access to all file revisions you can query for `ContentVersion` records filtered by the `ContentDocumentId`.
