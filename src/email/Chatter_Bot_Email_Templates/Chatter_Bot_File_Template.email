@@ -1,0 +1,9 @@
+<b>Title:</b> <a href="https://douglascayers-dev-ed.my.salesforce.com/{!Chatter_Bot_File__c.Content_Document_ID__c}">{!Chatter_Bot_File__c.Title__c}</a>
+<br/>
+<b>Description:</b> {!Chatter_Bot_File__c.Description__c}
+<br/>
+<b>Version:</b> {!Chatter_Bot_File__c.Version_Number__c}
+<br/>
+<b>Updated:</b> {!Chatter_Bot_File__c.LastModifiedDate}
+<br/>
+<b>Reason for Change:</b> {!Chatter_Bot_File__c.Reason_for_Change__c}

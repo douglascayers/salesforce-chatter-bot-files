@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Get_File_Follower_Emails</name>
+        <label>Get File Follower Emails</label>
+        <locationX>66</locationX>
+        <locationY>37</locationY>
+        <actionName>ChatterBotFileFollowersInvocable</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>Send_Email_to_File_Followers</targetReference>
+        </connector>
+        <inputParameters>
+            <name>contentDocumentId</name>
+            <value>
+                <elementReference>varChatterBotFile.Content_Document_ID__c</elementReference>
+            </value>
+        </inputParameters>
+        <outputParameters>
+            <assignToReference>varEmailAddresses</assignToReference>
+            <name>emailAddresses</name>
+        </outputParameters>
+    </actionCalls>
+    <actionCalls>
+        <name>Send_Email_to_File_Followers</name>
+        <label>Send Email to File Followers</label>
+        <locationX>255</locationX>
+        <locationY>37</locationY>
+        <actionName>ChatterBotFileSendEmailInvocable</actionName>
+        <actionType>apex</actionType>
+        <inputParameters>
+            <name>chatterBotFile</name>
+            <value>
+                <elementReference>varChatterBotFile</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailTemplateName</name>
+            <value>
+                <stringValue>Chatter_Bot_File_Template</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>toAddresses</name>
+            <value>
+                <elementReference>varEmailAddresses</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>attachFile</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <interviewLabel>Chatter Bot Files  {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Chatter Bot - Notify Followers of File Change Flow</label>
+    <processType>AutoLaunchedFlow</processType>
+    <startElementReference>Get_File_Follower_Emails</startElementReference>
+    <variables>
+        <name>varChatterBotFile</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Chatter_Bot_File__c</objectType>
+    </variables>
+    <variables>
+        <name>varEmailAddresses</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

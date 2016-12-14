@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
+        <members>ChatterBotFileFollowersInvocable</members>
+        <members>ChatterBotFileFollowersInvocableTest</members>
+        <members>ChatterBotFileSendEmailInvocable</members>
+        <members>ChatterBotFileSendEmailInvocableTest</members>
         <members>ChatterBotFileVersionTriggerHandler</members>
         <members>ChatterBotFileVersionTriggerHandlerTest</members>
         <name>ApexClass</name>
@@ -21,6 +25,21 @@
     <types>
         <members>Chatter_Bot_File__c</members>
         <name>CustomTab</name>
+    </types>
+    <types>
+        <members>Chatter_Bot_Email_Templates</members>
+        <members>Chatter_Bot_Email_Templates/Chatter_Bot_File_Template</members>
+        <name>EmailTemplate</name>
+    </types>
+    <types>
+        <members>Chatter_Bot_Notify_Followers_of_File_Change-7</members>
+        <members>Chatter_Bot_Notify_Followers_of_File_Change_Flow-3</members>
+        <name>Flow</name>
+    </types>
+    <types>
+        <members>Chatter_Bot_Notify_Followers_of_File_Change</members>
+        <members>Chatter_Bot_Notify_Followers_of_File_Change_Flow</members>
+        <name>FlowDefinition</name>
     </types>
     <types>
         <members>Chatter_Bot_File__c-Chatter Bot File Layout</members>

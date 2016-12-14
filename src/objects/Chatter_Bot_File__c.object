@@ -44,7 +44,7 @@
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
     <description>Everytime a ContentVersion record is inserted or updated then a Chatter Bot File record will be upserted. You can use Process Builder to execute when these records are created or updated and take any actions that you need.</description>
-    <enableActivities>false</enableActivities>
+    <enableActivities>true</enableActivities>
     <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>
     <enableHistory>false</enableHistory>
