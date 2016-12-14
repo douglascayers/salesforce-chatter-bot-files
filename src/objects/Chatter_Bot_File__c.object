@@ -66,6 +66,19 @@
         <unique>true</unique>
     </fields>
     <fields>
+        <fullName>Content_Version_ID__c</fullName>
+        <caseSensitive>true</caseSensitive>
+        <description>The latest published ContentVersion ID of the ContentDocument represented by this record.</description>
+        <externalId>true</externalId>
+        <inlineHelpText>The latest published ContentVersion ID of the ContentDocument represented by this record.</inlineHelpText>
+        <label>Content Version ID</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
         <fullName>Description__c</fullName>
         <externalId>false</externalId>
         <label>Description</label>
@@ -73,16 +86,6 @@
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>5</visibleLines>
-    </fields>
-    <fields>
-        <fullName>File_Extension__c</fullName>
-        <externalId>false</externalId>
-        <label>File Extension</label>
-        <length>255</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
     </fields>
     <fields>
         <fullName>File_Type__c</fullName>

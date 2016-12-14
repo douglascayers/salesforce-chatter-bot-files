@@ -6,11 +6,11 @@
     </applicationVisibilities>
     <classAccesses>
         <apexClass>ChatterBotFileVersionTriggerHandler</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>ChatterBotFileVersionTriggerHandlerTest</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <fieldPermissions>
         <editable>true</editable>
@@ -19,12 +19,12 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Chatter_Bot_File__c.Description__c</field>
+        <field>Chatter_Bot_File__c.Content_Version_ID__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Chatter_Bot_File__c.File_Extension__c</field>
+        <field>Chatter_Bot_File__c.Description__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

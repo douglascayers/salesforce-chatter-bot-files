@@ -15,6 +15,7 @@ public with sharing class ChatterBotFileVersionTriggerHandler {
 
             files.add( new Chatter_Bot_File__c(
                 content_document_id__c = version.contentDocumentId,
+                content_version_id__c = version.id,
                 title__c = version.title,
                 description__c = version.description,
                 version_number__c = version.versionNumber,
