@@ -52,9 +52,92 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Content_Document_ID__c</fullName>
+        <caseSensitive>true</caseSensitive>
+        <description>ID of the ContentDocument that this record represents the latest version of. To see all revision history then query ContentVersion object filtering by this ContentDocumentId value.</description>
+        <externalId>true</externalId>
+        <inlineHelpText>ID of the ContentDocument that this record represents the latest version of. To see all revision history then query ContentVersion object filtering by this ContentDocumentId value.</inlineHelpText>
+        <label>Content Document ID</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>Description__c</fullName>
+        <externalId>false</externalId>
+        <label>Description</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>File_Extension__c</fullName>
+        <externalId>false</externalId>
+        <label>File Extension</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>File_Type__c</fullName>
+        <description>Salesforce specific content/mime type descriptor for the file, such as POWER_POINT_X, TEXT, JPG, etc. Note that the file type SNOTE represents Salesforce Enhanced Notes and are not actual physical files.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Salesforce specific content/mime type descriptor for the file, such as POWER_POINT_X, TEXT, JPG, etc. Note that the file type SNOTE represents Salesforce Enhanced Notes and are not actual physical files.</inlineHelpText>
+        <label>File Type</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Reason_for_Change__c</fullName>
+        <externalId>false</externalId>
+        <label>Reason for Change</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Title__c</fullName>
+        <description>Title of the document.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Title of the document.</inlineHelpText>
+        <label>Title</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Version_Number__c</fullName>
+        <description>The version number. The number increments with each version of the document, for example, 1, 2, 3.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The version number. The number increments with each version of the document, for example, 1, 2, 3.</inlineHelpText>
+        <label>Version Number</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
     <label>Chatter Bot File</label>
     <listViews>
         <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Content_Document_ID__c</columns>
+        <columns>Title__c</columns>
+        <columns>Version_Number__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>LAST_UPDATE</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
@@ -64,6 +147,53 @@
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Chatter Bot Files</pluralLabel>
-    <searchLayouts/>
-    <sharingModel>ReadWrite</sharingModel>
+    <searchLayouts>
+        <customTabListAdditionalFields>Content_Document_ID__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Title__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Version_Number__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Reason_for_Change__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>UPDATEDBY_USER</customTabListAdditionalFields>
+        <customTabListAdditionalFields>LAST_UPDATE</customTabListAdditionalFields>
+        <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
+        <excludedStandardButtons>Accept</excludedStandardButtons>
+        <lookupDialogsAdditionalFields>Content_Document_ID__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Title__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Version_Number__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Reason_for_Change__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>UPDATEDBY_USER</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>LAST_UPDATE</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Content_Document_ID__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Title__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Version_Number__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Reason_for_Change__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>UPDATEDBY_USER</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>LAST_UPDATE</lookupPhoneDialogsAdditionalFields>
+        <searchResultsAdditionalFields>Content_Document_ID__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Title__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Version_Number__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Reason_for_Change__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>UPDATEDBY_USER</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>LAST_UPDATE</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>Private</sharingModel>
+    <webLinks>
+        <fullName>View_File</fullName>
+        <availability>online</availability>
+        <description>Links to the Content Document record.</description>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>View File</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>/{!Chatter_Bot_File__c.Content_Document_ID__c}</url>
+    </webLinks>
 </CustomObject>

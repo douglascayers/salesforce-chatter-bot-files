@@ -3,7 +3,10 @@ Salesforce Chatter Bot for Files
 
 Overview
 --------
-Chatter Bot for Files is a way to easily listen for version changes to Chatter Files and take action. An example would be to automatically notify each user following a File that a new version has been uploaded. Unfortunately, you cannot just leverage Process Builder to monitor for updates to ContentVersion object. This project makes it easy by monitoring for insert and updates on ContentVersion object and then creating a custom object that you can leverage within Process Builder.
+Chatter Bot for Files is a way to easily listen for version changes to Chatter Files and take action.
+An example would be to automatically notify each user following a File that a new version has been uploaded.
+Unfortunately, you cannot just leverage Process Builder to monitor for updates to ContentVersion object.
+This project makes it easy by monitoring for insert and updates on ContentVersion object and then creating a custom object that you can leverage within Process Builder.
 
 Installation
 ----------------------
