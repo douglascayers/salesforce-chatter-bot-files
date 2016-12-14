@@ -3,12 +3,12 @@
     <actionCalls>
         <name>Get_File_Follower_Emails</name>
         <label>Get File Follower Emails</label>
-        <locationX>66</locationX>
-        <locationY>37</locationY>
+        <locationX>131</locationX>
+        <locationY>33</locationY>
         <actionName>ChatterBotFileFollowersInvocable</actionName>
         <actionType>apex</actionType>
         <connector>
-            <targetReference>Send_Email_to_File_Followers</targetReference>
+            <targetReference>File_Has_Followers</targetReference>
         </connector>
         <inputParameters>
             <name>contentDocumentId</name>
@@ -24,8 +24,8 @@
     <actionCalls>
         <name>Send_Email_to_File_Followers</name>
         <label>Send Email to File Followers</label>
-        <locationX>255</locationX>
-        <locationY>37</locationY>
+        <locationX>129</locationX>
+        <locationY>296</locationY>
         <actionName>ChatterBotFileSendEmailInvocable</actionName>
         <actionType>apex</actionType>
         <inputParameters>
@@ -53,6 +53,40 @@
             </value>
         </inputParameters>
     </actionCalls>
+    <decisions>
+        <name>File_Has_Followers</name>
+        <label>File Has Followers?</label>
+        <locationX>130</locationX>
+        <locationY>159</locationY>
+        <defaultConnectorLabel>[Default Outcome]</defaultConnectorLabel>
+        <rules>
+            <name>File_Has_Followers_Yes</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>varEmailAddresses</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Send_Email_to_File_Followers</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+        <rules>
+            <name>File_Has_Followers_No</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>varEmailAddresses</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>No</label>
+        </rules>
+    </decisions>
     <interviewLabel>Chatter Bot Files  {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Chatter Bot - Notify Followers of File Change Flow</label>
     <processType>AutoLaunchedFlow</processType>

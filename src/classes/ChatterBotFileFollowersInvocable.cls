@@ -58,7 +58,11 @@ public with sharing class ChatterBotFileFollowersInvocable {
             Response res = new Response();
 
             res.contentDocumentId = req.contentDocumentId;
-            res.emailAddresses = new List<String>( documentIdToFollowerEmailsMap.get( req.contentDocumentId ) );
+
+            Set<String> emails = documentIdToFollowerEmailsMap.get( req.contentDocumentId );
+            if ( emails != null && emails.size() > 0 ) {
+                res.emailAddresses = new List<String>( emails );
+            }
 
             System.debug( 'response: ' + res );
 
