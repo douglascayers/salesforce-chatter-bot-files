@@ -36,6 +36,17 @@ Getting Started
 ![screenshot](/images/updated_chatter_bot_file.png)
 
 
+Example: Notify Followers of File Change
+----------------------------------------
+
+This solution comes bundled with an example Process Builder and Flow that demonstrate how to notify a File's followers any time a new version of the file is uploaded.
+If you prefer for this not to happen, you can either uncheck the **Active** checkbox (`Chatter_Bot_File__c.Active__c`) or deactivate/delete the example process/flow.
+
+The process and flow names are, respectively:
+* Chatter Bot - Notify Followers of File Change
+* Chatter Bot - Notify Followers of File Change Flow
+
+
 Other Information
 -----------------
 
