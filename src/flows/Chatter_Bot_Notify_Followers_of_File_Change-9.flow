@@ -75,9 +75,41 @@
             </value>
         </assignmentItems>
         <connector>
-            <targetReference>myDecision</targetReference>
+            <targetReference>isChangedDecision2_myRule_1_Version_Number_c</targetReference>
         </connector>
     </assignments>
+    <decisions>
+        <name>isChangedDecision2_myRule_1_Version_Number_c</name>
+        <label>isChangedDecision2_myRule_1_Version_Number_c</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myDecision</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>isChangedRule_2_myRule_1_Version_Number_c</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>myVariable_old</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>myVariable_old.Version_Number__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <elementReference>myVariable_current.Version_Number__c</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myDecision</targetReference>
+            </connector>
+            <label>isChangedRule_2_myRule_1_Version_Number_c</label>
+        </rules>
+    </decisions>
     <decisions>
         <processMetadataValues>
             <name>index</name>
@@ -94,33 +126,63 @@
             <name>myRule_1</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>formula_myRule_1</leftValueReference>
+                <processMetadataValues>
+                    <name>inputDataType</name>
+                    <value>
+                        <stringValue>Boolean</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>leftHandSideType</name>
+                    <value>
+                        <stringValue>Boolean</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>operatorDataType</name>
+                    <value>
+                        <stringValue>Boolean</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>rightHandSideType</name>
+                    <value>
+                        <stringValue>Boolean</stringValue>
+                    </value>
+                </processMetadataValues>
+                <leftValueReference>myVariable_current.Active__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
                 </rightValue>
             </conditions>
-            <connector>
-                <targetReference>myRule_1_pmetdec</targetReference>
-            </connector>
-            <label>New Version</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <name>myRule_1_pmetdec</name>
-        <label>Previously Met Decision</label>
-        <locationX>100</locationX>
-        <locationY>100</locationY>
-        <defaultConnector>
-            <targetReference>myRule_1_A1</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>Not Previously Met</defaultConnectorLabel>
-        <rules>
-            <name>myRule_1_pmetnullrule</name>
-            <conditionLogic>or</conditionLogic>
             <conditions>
-                <leftValueReference>myVariable_old</leftValueReference>
-                <operator>IsNull</operator>
+                <processMetadataValues>
+                    <name>inputDataType</name>
+                    <value>
+                        <stringValue>Boolean</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>leftHandSideType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>operatorDataType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>rightHandSideType</name>
+                    <value>
+                        <stringValue>Boolean</stringValue>
+                    </value>
+                </processMetadataValues>
+                <leftValueReference>isChangedRule_2_myRule_1_Version_Number_c</leftValueReference>
+                <operator>EqualTo</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
                 </rightValue>
@@ -128,68 +190,10 @@
             <connector>
                 <targetReference>myRule_1_A1</targetReference>
             </connector>
-            <label>Previously Met - Null</label>
-        </rules>
-        <rules>
-            <name>myRule_1_pmetrule</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>formula_myRule_1_pmetrule</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <label>Previously Met - Prev</label>
+            <label>New Version</label>
         </rules>
     </decisions>
-    <formulas>
-        <processMetadataValues>
-            <name>originalFormula</name>
-            <value>
-                <stringValue>AND(
-  [Chatter_Bot_File__c].Active__c,
-  OR(
-    ISNEW(),
-    ISCHANGED( [Chatter_Bot_File__c].Version_Number__c )
-  )
-)</stringValue>
-            </value>
-        </processMetadataValues>
-        <name>formula_myRule_1</name>
-        <dataType>Boolean</dataType>
-        <expression>AND(
-  {!myVariable_current.Active__c},
-  OR(
-    ISNEW(),
-    ISCHANGED( {!myVariable_current.Version_Number__c} )
-  )
-)</expression>
-    </formulas>
-    <formulas>
-        <processMetadataValues>
-            <name>originalFormula</name>
-            <value>
-                <stringValue>AND(
-  [Chatter_Bot_File__c].Active__c,
-  OR(
-    ISNEW(),
-    ISCHANGED( [Chatter_Bot_File__c].Version_Number__c )
-  )
-)</stringValue>
-            </value>
-        </processMetadataValues>
-        <name>formula_myRule_1_pmetrule</name>
-        <dataType>Boolean</dataType>
-        <expression>AND(
-  {!myVariable_old.Active__c},
-  OR(
-    ISNEW(),
-    ISCHANGED( {!myVariable_old.Version_Number__c} )
-  )
-)</expression>
-    </formulas>
-    <interviewLabel>Chatter_Bot_Notify_Followers_of_File_Change-8_Chatter_Bot_File__c</interviewLabel>
+    <interviewLabel>Chatter_Bot_Notify_Followers_of_File_Change-9_Chatter_Bot_File__c</interviewLabel>
     <label>Chatter Bot - Notify Followers of File Change</label>
     <processMetadataValues>
         <name>ObjectType</name>
