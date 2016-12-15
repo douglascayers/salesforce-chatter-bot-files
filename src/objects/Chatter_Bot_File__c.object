@@ -65,9 +65,9 @@
     <fields>
         <fullName>Content_Document_ID__c</fullName>
         <caseSensitive>true</caseSensitive>
-        <description>18 character ID of the ContentDocument that this record represents the latest version of. To see all revision history then query ContentVersion object filtering by this ContentDocumentId value.</description>
+        <description>ID of the ContentDocument that this record represents the latest version of. To see all revision history then query ContentVersion object filtering by this ContentDocumentId value.</description>
         <externalId>true</externalId>
-        <inlineHelpText>18 character ID of the ContentDocument that this record represents the latest version of. To see all revision history then query ContentVersion object filtering by this ContentDocumentId value.</inlineHelpText>
+        <inlineHelpText>ID of the ContentDocument that this record represents the latest version of. To see all revision history then query ContentVersion object filtering by this ContentDocumentId value.</inlineHelpText>
         <label>Content Document ID</label>
         <length>255</length>
         <required>false</required>
@@ -78,9 +78,9 @@
     <fields>
         <fullName>Content_Version_ID__c</fullName>
         <caseSensitive>true</caseSensitive>
-        <description>The latest published ContentVersion ID (18 characters) of the ContentDocument represented by this record.</description>
+        <description>The latest published ContentVersion ID of the ContentDocument represented by this record.</description>
         <externalId>true</externalId>
-        <inlineHelpText>The latest published ContentVersion ID (18 characters) of the ContentDocument represented by this record.</inlineHelpText>
+        <inlineHelpText>The latest published ContentVersion ID of the ContentDocument represented by this record.</inlineHelpText>
         <label>Content Version ID</label>
         <length>255</length>
         <required>false</required>
@@ -189,14 +189,6 @@
         <searchResultsAdditionalFields>LAST_UPDATE</searchResultsAdditionalFields>
     </searchLayouts>
     <sharingModel>Private</sharingModel>
-    <validationRules>
-        <fullName>Content_Document_ID</fullName>
-        <active>true</active>
-        <description>Must be 18 characters for ID comparison in apex trigger code.</description>
-        <errorConditionFormula>LEN( Content_Document_ID__c ) != 18</errorConditionFormula>
-        <errorDisplayField>Content_Document_ID__c</errorDisplayField>
-        <errorMessage>Please provide the full 18 character ID of the Content Document (Chatter File). This usually can be retrieved from the URL when viewing the Chatter File you want to monitor.</errorMessage>
-    </validationRules>
     <webLinks>
         <fullName>View_File</fullName>
         <availability>online</availability>
