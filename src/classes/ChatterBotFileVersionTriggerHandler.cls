@@ -49,6 +49,7 @@ public with sharing class ChatterBotFileVersionTriggerHandler {
 
             if ( chatterBotFile != null ) {
                 chatterBotFile.content_document_id__c = version.contentDocumentId;
+                chatterBotFile.content_version_id__c = version.id;
                 chatterBotFile.title__c = version.title;
                 chatterBotFile.description__c = version.description;
                 chatterBotFile.version_number__c = version.versionNumber;
