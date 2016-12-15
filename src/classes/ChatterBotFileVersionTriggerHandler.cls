@@ -16,9 +16,10 @@ public with sharing class ChatterBotFileVersionTriggerHandler {
         // do any chatter bot files exist for these document ids?
         // if yes then we should update those records, else ignore
 
-        Set<ID> contentDocumentIds = new Set<ID>();
+        Set<String> contentDocumentIds = new Set<String>();
         for ( ContentVersion version : contentVersions ) {
             contentDocumentIds.add( version.contentDocumentId );
+            contentDocumentIds.add( String.valueOf( version.contentDocumentId ).left( 15 ) );
         }
 
         // content document id => chatter bot file
