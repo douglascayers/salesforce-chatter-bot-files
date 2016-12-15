@@ -53,6 +53,16 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <fields>
+        <fullName>Active__c</fullName>
+        <defaultValue>true</defaultValue>
+        <description>Controls whether the ContentVersion trigger updates this record when new versions of the document identified by &quot;Content Document ID&quot; are uploaded. This may be more convenient than deleting the record to stop process builder or other workflow automation events from firing due to record updates.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Controls whether the ContentVersion trigger updates this record when new versions of the document identified by &quot;Content Document ID&quot; are uploaded. This may be more convenient than deleting the record to stop workflow automation events from firing.</inlineHelpText>
+        <label>Active</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>Content_Document_ID__c</fullName>
         <caseSensitive>true</caseSensitive>
         <description>ID of the ContentDocument that this record represents the latest version of. To see all revision history then query ContentVersion object filtering by this ContentDocumentId value.</description>

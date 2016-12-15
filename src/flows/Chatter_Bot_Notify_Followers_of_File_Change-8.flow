@@ -147,37 +147,49 @@
         <processMetadataValues>
             <name>originalFormula</name>
             <value>
-                <stringValue>OR(
-  ISNEW(),
-  ISCHANGED( [Chatter_Bot_File__c].Version_Number__c )
+                <stringValue>AND(
+  [Chatter_Bot_File__c].Active__c,
+  OR(
+    ISNEW(),
+    ISCHANGED( [Chatter_Bot_File__c].Version_Number__c )
+  )
 )</stringValue>
             </value>
         </processMetadataValues>
         <name>formula_myRule_1</name>
         <dataType>Boolean</dataType>
-        <expression>OR(
-  ISNEW(),
-  ISCHANGED( {!myVariable_current.Version_Number__c} )
+        <expression>AND(
+  {!myVariable_current.Active__c},
+  OR(
+    ISNEW(),
+    ISCHANGED( {!myVariable_current.Version_Number__c} )
+  )
 )</expression>
     </formulas>
     <formulas>
         <processMetadataValues>
             <name>originalFormula</name>
             <value>
-                <stringValue>OR(
-  ISNEW(),
-  ISCHANGED( [Chatter_Bot_File__c].Version_Number__c )
+                <stringValue>AND(
+  [Chatter_Bot_File__c].Active__c,
+  OR(
+    ISNEW(),
+    ISCHANGED( [Chatter_Bot_File__c].Version_Number__c )
+  )
 )</stringValue>
             </value>
         </processMetadataValues>
         <name>formula_myRule_1_pmetrule</name>
         <dataType>Boolean</dataType>
-        <expression>OR(
-  ISNEW(),
-  ISCHANGED( {!myVariable_old.Version_Number__c} )
+        <expression>AND(
+  {!myVariable_old.Active__c},
+  OR(
+    ISNEW(),
+    ISCHANGED( {!myVariable_old.Version_Number__c} )
+  )
 )</expression>
     </formulas>
-    <interviewLabel>Chatter_Bot_Notify_Followers_of_File_Change-7_Chatter_Bot_File__c</interviewLabel>
+    <interviewLabel>Chatter_Bot_Notify_Followers_of_File_Change-8_Chatter_Bot_File__c</interviewLabel>
     <label>Chatter Bot - Notify Followers of File Change</label>
     <processMetadataValues>
         <name>ObjectType</name>

@@ -1,8 +1,40 @@
+/**
+ * At the time of this writing, Process Builder does not support
+ * ContentDocument, ContentVersion, or ContentNote objects.
+ *
+ * As workaround we implemented a trigger that syncs record changes
+ * to ContentVersion object to a custom object, Chatter_Bot_File__c.
+ * Process Builder supports all custom objects so voila!
+ *
+ * You can vote for this to become standard feature here:
+ * https://success.salesforce.com/ideaView?id=0873A000000E35YQAS
+ */
 public with sharing class ChatterBotFileVersionTriggerHandler {
 
     public void createChatterBotFiles( List<ContentVersion> contentVersions ) {
 
-        List<Chatter_Bot_File__c> files = new List<Chatter_Bot_File__c>();
+        // do any chatter bot files exist for these document ids?
+        // if yes then we should update those records, else ignore
+
+        Set<ID> contentDocumentIds = new Set<ID>();
+        for ( ContentVersion version : contentVersions ) {
+            contentDocumentIds.add( version.contentDocumentId );
+        }
+
+        // content document id => chatter bot file
+        Map<ID, Chatter_Bot_File__c> contentDocumentToChatterBotFileMap = new Map<ID, Chatter_Bot_File__c>();
+        for ( Chatter_Bot_File__c chatterBotFile : [
+            SELECT
+                id, content_document_id__c
+            FROM
+                Chatter_Bot_File__c
+            WHERE
+                active__c = true
+                AND
+                content_document_id__c IN :contentDocumentIds
+        ]) {
+            contentDocumentToChatterBotFileMap.put( chatterBotFile.content_document_id__c, chatterBotFile );
+        }
 
         // Note that the content version records provided to us by the trigger
         // do not have their FileExtension field populated. If you need to know
@@ -13,19 +45,22 @@ public with sharing class ChatterBotFileVersionTriggerHandler {
 
             System.debug( version );
 
-            files.add( new Chatter_Bot_File__c(
-                content_document_id__c = version.contentDocumentId,
-                content_version_id__c = version.id,
-                title__c = version.title,
-                description__c = version.description,
-                version_number__c = version.versionNumber,
-                reason_for_change__c = version.reasonForChange,
-                file_type__c = version.fileType
-            ));
+            Chatter_Bot_File__c chatterBotFile = contentDocumentToChatterBotFileMap.get( version.contentDocumentId );
+
+            if ( chatterBotFile != null ) {
+                chatterBotFile.content_document_id__c = version.contentDocumentId;
+                chatterBotFile.title__c = version.title;
+                chatterBotFile.description__c = version.description;
+                chatterBotFile.version_number__c = version.versionNumber;
+                chatterBotFile.reason_for_change__c = version.reasonForChange;
+                chatterBotFile.file_type__c = version.fileType;
+            }
 
         }
 
-        Database.upsert( files, Chatter_Bot_File__c.Content_Document_ID__c );
+        if ( contentDocumentToChatterBotFileMap.values().size() > 0 ) {
+            update contentDocumentToChatterBotFileMap.values();
+        }
 
     }
 
