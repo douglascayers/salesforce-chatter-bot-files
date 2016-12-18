@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>Hierarchy</customSettingsType>
+    <description>Preferences for Chatter Bot Files</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Auto_Create_Chatter_Bot_File_Records__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>When checked then apex trigger will automatically create a Chatter Bot File record any time a new ContentDocument (Chatter File) is uploaded to Salesforce. When unchecked, an administrator must manually create a Chatter Bot File record (useful if want to limit which files are monitored).</description>
+        <externalId>false</externalId>
+        <inlineHelpText>When checked then when a new Chatter File is uploaded to Salesforce a Chatter Bot File record is also created. When unchecked, an administrator must manually create a Chatter Bot File record (useful if want to limit which files are monitored).</inlineHelpText>
+        <label>Auto Create Chatter Bot File Records?</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <label>Chatter Bot Files Setting</label>
+    <visibility>Protected</visibility>
+</CustomObject>

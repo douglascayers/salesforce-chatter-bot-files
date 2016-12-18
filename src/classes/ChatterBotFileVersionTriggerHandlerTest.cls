@@ -2,6 +2,58 @@
 private class ChatterBotFileVersionTriggerHandlerTest {
 
     @isTest
+    static void test_auto_create_chatter_bot_file() {
+
+        Chatter_Bot_Files_Setting__c settings = Chatter_Bot_Files_Setting__c.getInstance();
+        settings.auto_create_chatter_bot_file_records__c = true;
+        upsert settings;
+
+        Test.startTest();
+
+        ContentVersion cv = new ContentVersion(
+            title = 'Test Title',
+            description = 'Test Description',
+            pathOnClient = '/test.txt',
+            versionData = Blob.valueOf( 'Hello World' )
+        );
+
+        insert cv;
+
+        Test.stopTest();
+
+        ContentDocument cd = [ SELECT id FROM ContentDocument ];
+
+        System.assertEquals( 1, [ SELECT count() FROM Chatter_Bot_File__c WHERE content_document_id__c = :cd.id ] );
+
+    }
+
+    @isTest
+    static void test_no_auto_create_chatter_bot_file() {
+
+        Chatter_Bot_Files_Setting__c settings = Chatter_Bot_Files_Setting__c.getInstance();
+        settings.auto_create_chatter_bot_file_records__c = false;
+        upsert settings;
+
+        Test.startTest();
+
+        ContentVersion cv = new ContentVersion(
+            title = 'Test Title',
+            description = 'Test Description',
+            pathOnClient = '/test.txt',
+            versionData = Blob.valueOf( 'Hello World' )
+        );
+
+        insert cv;
+
+        Test.stopTest();
+
+        ContentDocument cd = [ SELECT id FROM ContentDocument ];
+
+        System.assertEquals( 0, [ SELECT count() FROM Chatter_Bot_File__c WHERE content_document_id__c = :cd.id ] );
+
+    }
+
+    @isTest
     static void test_update_file() {
 
         ContentVersion cv1 = new ContentVersion(

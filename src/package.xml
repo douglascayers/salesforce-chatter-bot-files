@@ -20,6 +20,7 @@
     </types>
     <types>
         <members>Chatter_Bot_File__c</members>
+        <members>Chatter_Bot_Files_Setting__c</members>
         <name>CustomObject</name>
     </types>
     <types>
