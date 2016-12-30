@@ -101,10 +101,15 @@ public without sharing class ChatterBotFileVersionTriggerHandler {
 
     public void deleteChatterBotFiles( List<ContentDocument> contentDocuments ) {
 
-        Set<ID> contentDocumentIds = new Set<ID>();
-
+        // When filtering on lookup fields, Salesforce has special
+        // handling to treat 15 and 18 character IDs the same.
+        // Since our query is on a text field and not an ID lookup field
+        // then we have to handle both 15 and 18 character IDs as unique
+        // values in our filter criteria.
+        Set<String> contentDocumentIds = new Set<String>();
         for ( ContentDocument document : contentDocuments ) {
             contentDocumentIds.add( document.id );
+            contentDocumentIds.add( String.valueOf( document.id ).left( 15 ) );
         }
 
         delete [ SELECT id FROM Chatter_Bot_File__c WHERE content_document_id__c IN :contentDocumentIds ];
