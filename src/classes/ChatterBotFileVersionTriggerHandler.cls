@@ -8,8 +8,14 @@
  *
  * You can vote for this to become standard feature here:
  * https://success.salesforce.com/ideaView?id=0873A000000E35YQAS
+ *
+ * Note, 'without sharing' is used in this class.
+ * Most users will not have sharing access to the Chatter_Bot_File__c object
+ * but we want to ensure this trigger handler can update those records when any
+ * user uploads a new file.
+ * https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_classes_keywords_sharing.htm
  */
-public with sharing class ChatterBotFileVersionTriggerHandler {
+public without sharing class ChatterBotFileVersionTriggerHandler {
 
     public void createChatterBotFiles( List<ContentVersion> contentVersions ) {
 
