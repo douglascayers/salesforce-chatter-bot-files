@@ -43,7 +43,7 @@
     <allowInChatterGroups>false</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
-    <description>Everytime a ContentVersion record is inserted or updated then a Chatter Bot File record will be upserted. You can use Process Builder to execute when these records are created or updated and take any actions that you need.</description>
+    <description>Everytime a ContentVersion record is inserted or updated then a Chatter Bot File record will be upserted. You can use Process Builder to execute when these records are created or updated and take any actions that you need. This is a workaround until if or when Salesforce supports ContentDocument, ContentVersion, ContentNote objects in Process Builder.</description>
     <enableActivities>true</enableActivities>
     <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>
@@ -149,13 +149,14 @@
         <columns>Content_Document_ID__c</columns>
         <columns>Title__c</columns>
         <columns>Version_Number__c</columns>
+        <columns>Active__c</columns>
         <columns>UPDATEDBY_USER</columns>
         <columns>LAST_UPDATE</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
     <nameField>
-        <displayFormat>CB-{0000}</displayFormat>
+        <displayFormat>CBF-{0000}</displayFormat>
         <label>Name</label>
         <type>AutoNumber</type>
     </nameField>
@@ -165,6 +166,7 @@
         <customTabListAdditionalFields>Title__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>Version_Number__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>Reason_for_Change__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Active__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>UPDATEDBY_USER</customTabListAdditionalFields>
         <customTabListAdditionalFields>LAST_UPDATE</customTabListAdditionalFields>
         <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
@@ -173,18 +175,21 @@
         <lookupDialogsAdditionalFields>Title__c</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>Version_Number__c</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>Reason_for_Change__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Active__c</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>UPDATEDBY_USER</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>LAST_UPDATE</lookupDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>Content_Document_ID__c</lookupPhoneDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>Title__c</lookupPhoneDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>Version_Number__c</lookupPhoneDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>Reason_for_Change__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Active__c</lookupPhoneDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>UPDATEDBY_USER</lookupPhoneDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>LAST_UPDATE</lookupPhoneDialogsAdditionalFields>
         <searchResultsAdditionalFields>Content_Document_ID__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Title__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Version_Number__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Reason_for_Change__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Active__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>UPDATEDBY_USER</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>LAST_UPDATE</searchResultsAdditionalFields>
     </searchLayouts>
