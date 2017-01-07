@@ -29,6 +29,8 @@ public with sharing class ChatterBotFileFollowersInvocable {
                 parentId IN :contentDocumentIds
             ORDER BY
                 parentId
+            LIMIT
+                1000
         ]);
 
         Map<ID, Set<String>> documentIdToFollowerEmailsMap = new Map<ID, Set<String>>();
