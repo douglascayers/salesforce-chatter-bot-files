@@ -51,6 +51,7 @@ public without sharing class ChatterBotFileVersionTriggerHandler {
         Boolean autoCreateChatterBotFiles = ( settings != null && settings.auto_create_chatter_bot_file_records__c );
 
         List<Chatter_Bot_File__c> chatterBotFilesToUpsert = new List<Chatter_Bot_File__c>();
+        List<Chatter_Bot_File__c> chatterBotFilesToUpdate = new List<Chatter_Bot_File__c>();
 
         for ( ContentVersion version : contentVersions ) {
 
@@ -87,7 +88,11 @@ public without sharing class ChatterBotFileVersionTriggerHandler {
                 chatterBotFile.reason_for_change__c = version.reasonForChange;
                 chatterBotFile.file_type__c = version.fileType;
 
-                chatterBotFilesToUpsert.add( chatterBotFile );
+                if ( String.isNotBlank( chatterBotFile.id ) ) {
+                    chatterBotFilesToUpdate.add( chatterBotFile );
+                } else {
+                    chatterBotFilesToUpsert.add( chatterBotFile );
+                }
 
             }
 
@@ -95,6 +100,10 @@ public without sharing class ChatterBotFileVersionTriggerHandler {
 
         if ( chatterBotFilesToUpsert.size() > 0 ) {
             Database.upsert( chatterBotFilesToUpsert, Chatter_Bot_File__c.Content_Document_ID__c );
+        }
+
+        if ( chatterBotFilesToUpdate.size() > 0 ) {
+            Database.update( chatterBotFilesToUpdate );
         }
 
     }
