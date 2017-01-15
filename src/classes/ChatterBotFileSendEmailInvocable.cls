@@ -24,9 +24,25 @@ public with sharing class ChatterBotFileSendEmailInvocable {
 
         List<Messaging.SingleEmailMessage> messages = new List<Messaging.SingleEmailMessage>();
 
+        Map<String, EmailTemplate> emailTemplateMap = new Map<String, EmailTemplate>();
+
+        Set<String> emailTemplateNames = new Set<String>();
+
         for ( Request req : requests ) {
 
-            EmailTemplate template = [ SELECT id FROM EmailTemplate WHERE developerName = :req.emailTemplateName ];
+            if ( String.isNotBlank( req.emailTemplateName ) ) {
+                emailTemplateNames.add( req.emailTemplateName );
+            }
+
+        }
+
+        for ( EmailTemplate template : [ SELECT id, developerName FROM EmailTemplate WHERE developerName IN :emailTemplateNames ] ) {
+            emailTemplateMap.put( template.developerName, template );
+        }
+
+        for ( Request req : requests ) {
+
+            EmailTemplate template = emailTemplateMap.get( req.emailTemplateName );
 
             Messaging.SingleEmailMessage message = Messaging.renderStoredEmailTemplate(
                 template.id,
