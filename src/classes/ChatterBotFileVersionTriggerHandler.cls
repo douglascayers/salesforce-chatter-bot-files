@@ -87,6 +87,8 @@ public without sharing class ChatterBotFileVersionTriggerHandler {
                 chatterBotFile.version_number__c = version.versionNumber;
                 chatterBotFile.reason_for_change__c = version.reasonForChange;
                 chatterBotFile.file_type__c = version.fileType;
+                chatterBotFile.path_on_client__c = version.pathOnClient;
+                chatterBotFile.content_size__c = version.contentSize;
 
                 if ( String.isNotBlank( chatterBotFile.id ) ) {
                     chatterBotFilesToUpdate.add( chatterBotFile );

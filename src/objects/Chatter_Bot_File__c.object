@@ -76,6 +76,19 @@
         <unique>true</unique>
     </fields>
     <fields>
+        <fullName>Content_Size__c</fullName>
+        <description>Size of the document in bytes.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Size of the document in bytes.</inlineHelpText>
+        <label>Content Size</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Content_Version_ID__c</fullName>
         <caseSensitive>true</caseSensitive>
         <description>The latest published ContentVersion ID of the ContentDocument represented by this record.</description>
@@ -103,6 +116,18 @@
         <externalId>false</externalId>
         <inlineHelpText>Salesforce specific content/mime type descriptor for the file, such as POWER_POINT_X, TEXT, JPG, etc. Note that the file type SNOTE represents Salesforce Enhanced Notes and are not actual physical files.</inlineHelpText>
         <label>File Type</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Path_On_Client__c</fullName>
+        <description>The complete path of the document.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The complete path of the document.</inlineHelpText>
+        <label>Path on Client</label>
         <length>255</length>
         <required>false</required>
         <trackTrending>false</trackTrending>
